@@ -1,9 +1,6 @@
 package pl.dorotagomulec.bookscollection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,40 +9,35 @@ import java.util.List;
 @Service
 public class Library {
 
+    private ArrayList<Book> myBooks;
 
-    private ArrayList<Book> booksToRead;
-    private ArrayList<Book> finishedBook;
-
-    public Library(ArrayList<Book> booksToRead, ArrayList<Book> finishedBook) {
-        booksToRead = new ArrayList<>();
-        finishedBook = new ArrayList<>();
-        this.booksToRead = booksToRead;
-        this.finishedBook = finishedBook;
-
+    public ArrayList<Book> getMyBooks() {
+        return myBooks;
     }
 
-    public List<Book> showFinishedBooks() {
-        return finishedBook;
+    @Autowired
+    public Library(ArrayList<Book> myBooks) {
+        myBooks = new ArrayList<>();
+        this.myBooks = myBooks;
     }
 
-    public List<Book> showBooksToRead() {
-        return booksToRead;
+
+    public List<Book> showBooks() {
+        return myBooks;
     }
 
-    public boolean addBookToFinishedBooks(Book book) {
-        finishedBook.add( book );
-        return true;
+    public String addBook(Book book) {
+        myBooks.add( book );
+        return "Book has been added to the list";
     }
 
-    public boolean addBookToRead(Book book) {
-        booksToRead.add( book );
-        return true;
-    }
+    public String deleteFromMyBooks(String titleToRemove) {
+        for ( Book book : myBooks){
+            if (book.getTitle().equals( titleToRemove ))
+            myBooks.remove( book );
+            }
+        return "Book " + titleToRemove + " has been deleted from the list";
 
-    public String deleteFromFinishedBooks(String titleToRemove) {
-
-      //tu przerwa
-        return "Book " + titleToRemove + "has been deleted from list";
     }
 }
 

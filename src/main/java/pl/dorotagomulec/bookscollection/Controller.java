@@ -15,28 +15,19 @@ public class Controller {
         this.library = library;
     }
 
-    @GetMapping("/books/finished")
-    public List<Book> finishedbooks(){
-        return library.showFinishedBooks();
+    @GetMapping("/books/all")
+    public List<Book> allBooks() {
+        return library.showBooks();
     }
 
-    @GetMapping("/books/unfinished")
-    public List<Book> booksToRead() {
-        return library.showBooksToRead();
+    @PostMapping("/books/post")
+    public String addBook(@RequestBody Book book) {
+        return library.addBook( book );
     }
 
-    @PostMapping("/books/unfinished/post")
-    public boolean addBookToRead(@RequestBody Book book){
-        return library.addBookToRead( book );
-    }
-
-    @PostMapping("/books/finished/post")
-    public boolean addBookToFinishedBooks(@RequestBody Book book){
-        return library.addBookToFinishedBooks( book );
-    }
-
-    @DeleteMapping("/books/finished/delete")
-    public String deleteBookFromFinishedBooks (@RequestBody String titleToRemove){
-        return library.deleteFromFinishedBooks( titleToRemove );
+    @DeleteMapping("/books/delete")
+    public String deleteBook(@RequestBody String titleToRemove) {
+        return library.deleteFromMyBooks( titleToRemove );
     }
 }
+

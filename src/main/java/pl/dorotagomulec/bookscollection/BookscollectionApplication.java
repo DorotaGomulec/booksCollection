@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class BookscollectionApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BookscollectionApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run( BookscollectionApplication.class, args );
+    }
 }

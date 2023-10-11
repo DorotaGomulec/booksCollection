@@ -2,8 +2,6 @@ package pl.dorotagomulec.bookscollection;
 
 import lombok.*;
 
-
-
 @AllArgsConstructor
 @Data
 public class Book {
@@ -12,5 +10,5 @@ public class Book {
     private String title;
     private String author;
     private int pages;
-    boolean isFinished;
+    private boolean isFinished;
 }

@@ -32,12 +32,39 @@ public class Library {
     }
 
     public String deleteFromMyBooks(String titleToRemove) {
-        for ( Book book : myBooks){
-            if (book.getTitle().equals( titleToRemove ))
-            myBooks.remove( book );
+        for (Book book : myBooks) {
+            if (book.getTitle().equals( titleToRemove )) {
+                myBooks.remove( book );
+                return "Book " + titleToRemove + " has been deleted from the list";
+            } else {
+                return "Entered title not found";
             }
-        return "Book " + titleToRemove + " has been deleted from the list";
+        }
+        return "";
+    }
 
+
+    public List<Book> showFinishedBooks() {
+        ArrayList<Book> finishedBooks = new ArrayList<>();
+        for (Book book : myBooks) {
+            if (book.isFinished()) {
+                finishedBooks.add( book );
+            }
+        }
+        return finishedBooks;
+    }
+
+
+    public List<Book> showUnfinishedBooks() {
+        ArrayList<Book> unfinishedBooks = new ArrayList<>();
+        for (Book book : myBooks) {
+            if (!book.isFinished()) {
+                unfinishedBooks.add( book );
+            }
+        }
+        return unfinishedBooks;
     }
 }
+
+
 

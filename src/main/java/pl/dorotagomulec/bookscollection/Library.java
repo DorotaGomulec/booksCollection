@@ -35,12 +35,9 @@ public class Library {
         for (Book book : myBooks) {
             if (book.getTitle().equals( titleToRemove )) {
                 myBooks.remove( book );
-                return "Book " + titleToRemove + " has been deleted from the list";
-            } else {
-                return "Entered title not found";
             }
         }
-        return "";
+        return "done";
     }
 
 
@@ -64,7 +61,17 @@ public class Library {
         }
         return unfinishedBooks;
     }
+
+
+    public void updateAsReadBook(String titleOfBookToUpdate) {
+        for (Book book : myBooks) {
+            if (book.getTitle().equals( titleOfBookToUpdate )) {
+                book.setFinished( true );
+            }
+        }
+    }
 }
+
 
 
 

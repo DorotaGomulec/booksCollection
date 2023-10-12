@@ -40,5 +40,11 @@ public class Controller {
     public List<Book> showUnfinishedBooks() {
         return library.showUnfinishedBooks();
     }
-}
 
+
+    @PatchMapping("/update")
+    public void updateAsReadBook(@RequestBody String titleOfBookToUpdate) {
+        library.updateAsReadBook( titleOfBookToUpdate );
+    }
+
+}

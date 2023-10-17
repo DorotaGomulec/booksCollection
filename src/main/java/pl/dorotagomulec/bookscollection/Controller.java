@@ -21,13 +21,13 @@ public class Controller {
         return library.showBooks();
     }
 
-    @PostMapping("/post")
+    @PostMapping("")
     public String addBook(@RequestBody Book book) {
         return library.addBook( book );
     }
 
-    @DeleteMapping("/delete")
-    public String deleteBook(@RequestBody String titleToRemove) {
+    @DeleteMapping("/{titleToRemove}")
+    public String deleteBook(@PathVariable String titleToRemove) {
         return library.deleteFromMyBooks( titleToRemove );
     }
 
@@ -42,8 +42,8 @@ public class Controller {
     }
 
 
-    @PatchMapping("/update")
-    public void updateAsReadBook(@RequestBody String titleOfBookToUpdate) {
+    @PatchMapping("/{titleOfBookToUpdate}")
+    public void updateAsReadBook(@PathVariable String titleOfBookToUpdate) {
         library.updateAsReadBook( titleOfBookToUpdate );
     }
 
